@@ -8,20 +8,26 @@ const GuGuDan = () => {
 
   const inputEL = useRef<HTMLInputElement>(null);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const input = inputEL.current;
+  // 1. 제네릭 자리에 type을 선언해주기!
 
-    if (word[word.length - 1] === answer[0]) {
-      setResult("딩동댕");
-      setWord(answer);
-    } else {
-      setResult("땡");
-    }
-    input?.focus();
-    setAnswer("");
-  };
+  const onSubmit = useCallback<(e: React.FormEvent) => void>(
+    (e) => {
+      e.preventDefault();
+      const input = inputEL.current;
 
+      if (word[word.length - 1] === answer[0]) {
+        setResult("딩동댕");
+        setWord(answer);
+      } else {
+        setResult("땡");
+      }
+      input?.focus();
+      setAnswer("");
+    },
+    [word, answer]
+  );
+
+  // 2. 매개변수에 직접 타입 선언
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setAnswer(e.target.value);
   }, []);
