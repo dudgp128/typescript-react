@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import GuGuDan from "./GuGuDan";
-import WordRelay from "./WordRelay";
+import NumberBaseBall from "./NumberBaseBall";
 
-ReactDOM.render(<WordRelay />, document.querySelector("#root"));
+ReactDOM.render(<NumberBaseBall />, document.querySelector("#root"));

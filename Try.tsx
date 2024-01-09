@@ -1,8 +1,10 @@
 import React from "react";
-import { TryInfo } from "./types";
+import { TryProps } from "./types";
 
-export const Try: React.FunctionComponent({tryInfo:TryInfo}) = () => {
-  return <ul>
-    {tryInfo.map((e)=> <li> {e.try}, {e.result}</li>)}
-  </ul>
+export const Try: React.FunctionComponent<TryProps> = ({ tryInfo }) => {
+  return (
+    <li>
+      {tryInfo.try}, {tryInfo.result}
+    </li>
+  );
 };

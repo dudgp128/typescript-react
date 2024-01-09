@@ -33,7 +33,7 @@ const NumberBaseBall = () => {
         setResult("실패");
       } else {
         console.log(`답은 ${answer.join("")}`);
-        for (let i = 0; i < 4; i += 1) {
+        for (let i = 0; i < 4; i++) {
           if (answerArray[i] === answer[i]) {
             strike++;
           } else if (answer.includes(answerArray[i])) {
@@ -52,7 +52,8 @@ const NumberBaseBall = () => {
     e.preventDefault();
     const input = inputEL.current;
     getResult();
-    if (result === "홈런!" || "실패") {
+    if (result === "홈런!" || result === "실패") {
+      alert(`a${result} 게임을 다시 시작합니다~!`);
       setAnswer(getNumbers());
       setTries([]);
     }
@@ -66,10 +67,16 @@ const NumberBaseBall = () => {
 
   return (
     <>
+      <h1>result:{result}</h1>
       <form onSubmit={onSubmit}>
-        <input ref={inputEL} onChange={onChange} value={value} />
-        <h3> 시도 : </h3>
-        <Try tryinfo={tries} />
+        <input ref={inputEL} maxLength={4} onChange={onChange} value={value} />
+        <button>입력</button>
+        <h3> 시도 : {tries.length}</h3>
+        <ul>
+          {tries.map((v, i) => (
+            <Try key={i} tryInfo={v} />
+          ))}
+        </ul>
       </form>
     </>
   );
