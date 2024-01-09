@@ -1,4 +1,4 @@
 export interface TryInfo {
-  try: number;
+  try: string;
   result: string;
 }
