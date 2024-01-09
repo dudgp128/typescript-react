@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 
 module.exports = {
   mode: "development",
@@ -12,7 +11,7 @@ module.exports = {
     app: "./client",
   },
 
-  modules: {
+  module: {
     rules: [
       {
         test: /\.tsx?$/,
@@ -21,7 +20,8 @@ module.exports = {
     ],
   },
   output: {
-    filename: "[name].js",
+    filename: "app.js",
     path: path.join(__dirname, "dist"),
+    publicPath: "/dist",
   },
 };
